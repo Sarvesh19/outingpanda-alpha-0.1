@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 
 export class StudentService {
 
-  private baseUrl = 'http://localhost:8083/employees/';
+  //private baseUrl = 'http://localhost:8083/employees/';
+  private baseUrl = 'http://ec2-13-127-69-46.ap-south-1.compute.amazonaws.com:8084/employees/';
 
   constructor(private http:HttpClient) { }
 
@@ -21,7 +22,7 @@ export class StudentService {
   }
 
   deleteStudent(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl} + 'delete-student'/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}` + 'delete-student/' + id, { responseType: 'text' });
   }
 
   getStudent(id: number): Observable<Object> {
@@ -29,7 +30,7 @@ export class StudentService {
   }
 
   updateStudent(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/update-student/${id}`, value);
+    return this.http.post(`${this.baseUrl} + 'update-student' + /${id}`, value);
   }
   
 }                                           
